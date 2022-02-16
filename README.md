@@ -2,6 +2,8 @@
 ROS service encapsulation instruction interface of mirobot robot.
 该ROS包提供了Mirobot机械臂一些基本指令的ROS服务封装，以服务的形式发布机械臂控制指令
 ROS版本：kinetic 1.12.17
+作者：Thor zhou
+zhoudongxv@yeah.net
 
 # 使用方法
 ## 1.编译
@@ -49,7 +51,7 @@ $ rosservice call /MirobotServer/SetCartAbsoluteCmd "{x: 200.0, y: 10.0, z: 50.0
 ```
 运动到位置（200,10,50），姿态（0,0,0）处，速度2000
 ### /MirobotServer/SetCartRelativeCmd
-与SetCartAbsoluteCmd服务类似，区别在于发布的是相对位置值
+功能与SetCartAbsoluteCmd服务类似，区别在于发布的是相对位置值
 例如：
 ```bash
 $ rosservice call /MirobotServer/SetCartAbsoluteCmd "{x: 10.0, y: 0.0, z: 0.0, a: 0.0, b: 0.0, c: 0.0, speed: 2000}" 
@@ -59,13 +61,26 @@ $ rosservice call /MirobotServer/SetCartAbsoluteCmd "{x: 10.0, y: 0.0, z: 0.0, a
 机械臂关节运动指令，参数为关节运动值，该指令为绝对位置值，返回执行结果，1为成功，-1为失败
 例如：
 ```bash
-$ rosservice call /MirobotServer/SetCartAbsoluteCmd "{x: 10.0, y: 0.0, z: 0.0, a: 0.0, b: 0.0, c: 0.0, speed: 2000}" 
+$ rosservice call /MirobotServer/SetJointAbsoluteCmd "{jointAngle_1: 90.0, jointAngle_2: 0.0, jointAngle_3: 0.0, jointAngle_4: 0.0, jointAngle_5: 0.0,
+  jointAngle_6: 0.0, speed: 2000}" 
 ```
-
-
-
-
-
-
-
-
+机械臂关节1运动到绝对角度值90度处，速度2000
+### /MirobotServer/SetJointRelativeCmd
+功能与SetJointAbsoluteCmd服务类似，区别在于发布的是相对运动角度值
+例如：
+```bash
+$ rosservice call /MirobotServer/SetJointRelativeCmd "{jointAngle_1: 10.0, jointAngle_2: 0.0, jointAngle_3: 0.0, jointAngle_4: 0.0, jointAngle_5: 0.0,
+  jointAngle_6: 0.0, speed: 2000}" 
+```
+机械臂关节1正向运动10度，速度为2000
+### /MirobotServer/SetGcodeCmd
+该服务可以发布Mirobot机械臂支持的任意G代码指令，参数为要发布的G代码指令，返回值为执行结果，1为成功，-1为失败
+例如：
+```bash
+$ rosservice call /MirobotServer/SetGcodeCmd "gcode: '\$h'"
+```
+该指令为机械臂复位运动指令，注意指令中的$符号前必须添加\,否则会被转义
+```bash
+$ rosservice call /MirobotServer/SetGcodeCmd "gcode: 'M21G91G0X10'"
+```
+该指令为机械臂支持的角度运动指令
