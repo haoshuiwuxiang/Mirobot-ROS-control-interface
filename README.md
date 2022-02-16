@@ -2,8 +2,7 @@
 ROS service encapsulation instruction interface of mirobot robot.
 该ROS包提供了Mirobot机械臂一些基本指令的ROS服务封装，以服务的形式发布机械臂控制指令
 ROS版本：kinetic 1.12.17
-作者：Thor zhou
-zhoudongxv@yeah.net
+Thor zhou
 
 # 使用方法
 ## 1.编译
