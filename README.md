@@ -12,7 +12,7 @@ $ catkin_make
 ```
 ## 2.设置环境变量
 ```bash
-$ echo "source ~/mirobot_ws/devel/setup.bash" >> ~/.bashrc
+$ echo "source ~/Mirobot-ROS-control-interface/devel/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
 ```
 ## 3.运行roscore
