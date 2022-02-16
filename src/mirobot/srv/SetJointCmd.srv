@@ -1,0 +1,9 @@
+float32 jointAngle_1 
+float32 jointAngle_2 
+float32 jointAngle_3 
+float32 jointAngle_4 
+float32 jointAngle_5 
+float32 jointAngle_6 
+int32 speed 
+---
+int32 result

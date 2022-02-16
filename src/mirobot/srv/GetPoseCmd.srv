@@ -1,0 +1,16 @@
+---
+int32 result
+int32 state
+float32 x
+float32 y
+float32 z
+float32 a
+float32 b
+float32 c
+float32 jointAngle_1
+float32 jointAngle_2
+float32 jointAngle_3
+float32 jointAngle_4
+float32 jointAngle_5
+float32 jointAngle_6
+float32 jointAngle_7
